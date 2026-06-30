@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Krishna Sai Naidu G | Data Analyst Portfolio</title>
+  <style>
+    :root {
+      --bg: #f7f7f5;
+      --card: #ffffff;
+      --text: #1f2933;
+      --muted: #5b6472;
+      --line: #d9dde3;
+      --accent: #1f4e79;
+      --accent-light: #e8f1f8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+
+    header {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 42px;
+      margin-bottom: 28px;
+      box-shadow: 0 8px 22px rgba(31, 41, 51, 0.06);
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 1.05;
+      color: var(--text);
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: 1.8rem;
+      line-height: 1.2;
+      color: var(--text);
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 1.22rem;
+      color: var(--accent);
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    .subtitle {
+      font-size: 1.22rem;
+      margin: 18px 0 20px;
+      color: var(--muted);
+      max-width: 880px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 22px;
+      margin-top: 26px;
+    }
+
+    .hero-box {
+      background: var(--accent-light);
+      border-radius: 18px;
+      padding: 22px;
+      border: 1px solid #cbdceb;
+    }
+
+    .hero-box strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--accent);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--accent);
+      border: 1px solid var(--line);
+      background: var(--card);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    section {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 34px;
+      margin-bottom: 28px;
+      box-shadow: 0 8px 22px rgba(31, 41, 51, 0.04);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 22px;
+      background: #fff;
+    }
+
+    .project {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 26px;
+      margin-bottom: 22px;
+      background: #fff;
+    }
+
+    .project:last-child {
+      margin-bottom: 0;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 18px;
+    }
+
+    .tag {
+      background: var(--accent-light);
+      color: var(--accent);
+      border: 1px solid #cbdceb;
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    ul {
+      margin: 10px 0 0;
+      padding-left: 22px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .metric {
+      background: var(--accent-light);
+      border: 1px solid #cbdceb;
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .metric .number {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .metric .label {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .note {
+      background: #fff9e8;
+      border: 1px solid #ead89a;
+      color: #64501b;
+      border-radius: 16px;
+      padding: 18px;
+      margin-top: 18px;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 24px 0 0;
+      font-size: 0.92rem;
+    }
+
+    .contact-box {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .contact-box span {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 13px;
+      background: var(--bg);
+    }
+
+    @media (max-width: 800px) {
+      header, section {
+        padding: 24px;
+      }
+
+      .hero-grid,
+      .grid-2,
+      .grid-3,
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="eyebrow">Data Analyst Portfolio</div>
+      <h1>Krishna Sai Naidu G</h1>
+      <p class="subtitle">Data Analyst with experience in retail operations, service operations, KPI reporting, dashboard development, SQL analysis, Excel modelling, Power BI reporting, and business-focused insight generation.</p>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="hero-grid">
+        <div class="hero-box">
+          <strong>Portfolio Focus</strong>
+          I use data to clean messy information, analyse performance, build clear dashboards, identify operational trends, and turn findings into practical business recommendations.
+        </div>
+        <div class="hero-box">
+          <strong>Target Roles</strong>
+          Data Analyst · Reporting Analyst · BI Analyst · Operations Analyst · MI Analyst
+        </div>
+      </div>
+    </header>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <p>I am a Business Analytics graduate with hands-on experience across retail operations and service operations. My work has involved analysing SKU-level records, building reports and dashboards, validating data, tracking KPIs, investigating recurring issues, and communicating findings to support better decisions.</p>
+      <p>My strongest value is the combination of business understanding and practical analytics. I do not only build charts; I focus on what the numbers mean, what is causing the trend, and what action the business should take next.</p>
+
+      <div class="metrics">
+        <div class="metric">
+          <div class="number">2,000+</div>
+          <div class="label">SKU records analysed in retail operations</div>
+        </div>
+        <div class="metric">
+          <div class="number">15%</div>
+          <div class="label">Improvement in inventory accuracy</div>
+        </div>
+        <div class="metric">
+          <div class="number">50+</div>
+          <div class="label">Reports and dashboards created</div>
+        </div>
+        <div class="metric">
+          <div class="number">30%</div>
+          <div class="label">Reduction in recurring service issues</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Featured Projects</h2>
+
+      <article class="project">
+        <h3>1. Retail Sales & Inventory Performance Dashboard</h3>
+        <div class="tag-row">
+          <span class="tag">Power BI</span>
+          <span class="tag">Excel</span>
+          <span class="tag">SQL</span>
+          <span class="tag">Retail Analytics</span>
+          <span class="tag">KPI Reporting</span>
+        </div>
+        <p><strong>Business Problem:</strong> Retail teams need clear visibility of sales performance, stock movement, category trends, and reorder risks. Without structured reporting, slow-moving products, stock gaps, and category performance issues can be missed.</p>
+        <p><strong>Objective:</strong> Analyse retail sales and inventory data to identify top-performing categories, slow-moving products, stock risk, and opportunities to improve replenishment decisions.</p>
+        <p><strong>Data Used:</strong> Retail-style data including product ID, product name, category, brand, units sold, revenue, stock available, reorder level, supplier, and store location.</p>
+        <p><strong>Analysis Completed:</strong></p>
+        <ul>
+          <li>Cleaned product and stock data by checking missing values, duplicate SKUs, inconsistent categories, and incorrect price/revenue fields.</li>
+          <li>Created sales, revenue, stock status, reorder risk, and category performance metrics.</li>
+          <li>Built dashboard views for executive summary, category performance, inventory movement, and action recommendations.</li>
+          <li>Identified fast-moving products, slow-moving products, low-stock items, and overstocked categories.</li>
+        </ul>
+        <p><strong>Key Insights:</strong> The analysis highlights which categories drive revenue, which products need reorder attention, and which stock lines should be reviewed for pricing, promotion, or reduced purchasing.</p>
+        <p><strong>Business Value:</strong> Supports better stock control, faster reporting, improved product visibility, and more confident operational decisions.</p>
+      </article>
+
+      <article class="project">
+        <h3>2. Service Operations & Incident Analysis</h3>
+        <div class="tag-row">
+          <span class="tag">SQL</span>
+          <span class="tag">Power BI</span>
+          <span class="tag">Excel</span>
+          <span class="tag">Jira-style Data</span>
+          <span class="tag">Root Cause Analysis</span>
+        </div>
+        <p><strong>Business Problem:</strong> Service teams need to understand incident trends, repeated issues, downtime, and resolution performance. Without clear reporting, recurring problems continue and service performance becomes reactive instead of controlled.</p>
+        <p><strong>Objective:</strong> Analyse incident and service operations data to identify issue patterns, resolution bottlenecks, recurring incident categories, and opportunities to improve service continuity.</p>
+        <p><strong>Data Used:</strong> Incident records including ticket ID, issue category, priority, status, created date, resolved date, resolution time, impacted system, root cause, and recurrence flag.</p>
+        <p><strong>Analysis Completed:</strong></p>
+        <ul>
+          <li>Grouped incidents by category, priority, system, status, and recurrence pattern.</li>
+          <li>Calculated incident volume, average resolution time, downtime trend, and recurring issue rate.</li>
+          <li>Built reporting views to highlight top issue categories and delayed resolution areas.</li>
+          <li>Used root cause analysis to separate isolated issues from repeat operational problems.</li>
+        </ul>
+        <p><strong>Key Insights:</strong> The analysis identifies high-frequency issue categories, repeated incidents, and areas where better documentation, monitoring, or escalation rules could reduce service disruption.</p>
+        <p><strong>Business Value:</strong> Demonstrates practical service analytics, incident reporting, and data-led operational improvement.</p>
+      </article>
+
+      <article class="project">
+        <h3>3. Employee Attrition Analysis</h3>
+        <div class="tag-row">
+          <span class="tag">Python</span>
+          <span class="tag">Excel</span>
+          <span class="tag">Power BI</span>
+          <span class="tag">Predictive Analytics</span>
+          <span class="tag">HR Analytics</span>
+        </div>
+        <p><strong>Business Problem:</strong> Organisations need to understand why employees leave and which factors increase attrition risk. Without structured analysis, retention actions become generic and ineffective.</p>
+        <p><strong>Objective:</strong> Analyse employee attrition data to identify key drivers of turnover and recommend actions to improve retention.</p>
+        <p><strong>Data Used:</strong> HR-style dataset containing employee demographics, department, job role, salary, tenure, satisfaction level, performance rating, overtime, and attrition status.</p>
+        <p><strong>Analysis Completed:</strong></p>
+        <ul>
+          <li>Cleaned and prepared employee data for analysis by handling missing values and standardising categorical variables.</li>
+          <li>Explored attrition patterns by department, role, salary band, tenure, overtime, and satisfaction level.</li>
+          <li>Created visual summaries to show the strongest attrition risk areas.</li>
+          <li>Built a predictive model to classify attrition risk and explain the most important influencing factors.</li>
+        </ul>
+        <p><strong>Key Insights:</strong> Attrition risk is often linked to a combination of workload, satisfaction, tenure, salary progression, and department-level patterns rather than one single cause.</p>
+        <p><strong>Business Value:</strong> Helps HR and management teams target retention actions using evidence instead of assumptions.</p>
+      </article>
+
+      <article class="project">
+        <h3>4. Customer Sales & Revenue Analysis</h3>
+        <div class="tag-row">
+          <span class="tag">Excel</span>
+          <span class="tag">SQL</span>
+          <span class="tag">Power BI</span>
+          <span class="tag">Revenue Analysis</span>
+          <span class="tag">Customer Insights</span>
+        </div>
+        <p><strong>Business Problem:</strong> Businesses need to know where revenue comes from, which customer segments perform best, and what actions can increase repeat sales and average order value.</p>
+        <p><strong>Objective:</strong> Analyse customer sales data to understand revenue trends, customer segments, product performance, repeat purchasing, and growth opportunities.</p>
+        <p><strong>Data Used:</strong> Sales records including order ID, customer ID, customer segment, product category, order date, units sold, price, revenue, region, and repeat purchase flag.</p>
+        <p><strong>Analysis Completed:</strong></p>
+        <ul>
+          <li>Calculated monthly revenue, average order value, repeat purchase rate, and product/category performance.</li>
+          <li>Segmented customers by purchase frequency, revenue contribution, and category preference.</li>
+          <li>Identified high-value customer groups and underperforming product categories.</li>
+          <li>Created business recommendations for pricing, promotions, and customer retention.</li>
+        </ul>
+        <p><strong>Key Insights:</strong> Revenue growth is usually driven by a small group of high-value customers and strong-performing categories, while low-performing segments require targeted action.</p>
+        <p><strong>Business Value:</strong> Shows ability to connect sales data with commercial decision-making and business growth recommendations.</p>
+      </article>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Data Analysis</h3>
+          <ul>
+            <li>Data cleaning and validation</li>
+            <li>Trend and variance analysis</li>
+            <li>KPI tracking</li>
+            <li>Root cause analysis</li>
+            <li>Business recommendations</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Tools</h3>
+          <ul>
+            <li>SQL</li>
+            <li>Microsoft Excel</li>
+            <li>Power BI</li>
+            <li>Python</li>
+            <li>Jira</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Reporting</h3>
+          <ul>
+            <li>Dashboard development</li>
+            <li>MI reporting</li>
+            <li>Operational reporting</li>
+            <li>Data storytelling</li>
+            <li>Stakeholder communication</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2>Experience Snapshot</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>VVIP Retail LTD — Trading Assistant / Business Analysis Support</h3>
+          <p><strong>May 2024 – Present</strong></p>
+          <ul>
+            <li>Analysed 2,000+ SKU records across sales, category, and inventory data.</li>
+            <li>Built Excel and Power BI reporting to track sales, revenue, stock movement, and category performance.</li>
+            <li>Improved inventory accuracy by 15% through data checks and stock monitoring.</li>
+            <li>Reduced reporting cycle time by 18% by improving report structure and recurring analysis.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Digitral Pvt. Ltd. — Technical Support Engineer / Data Analytics Support</h3>
+          <p><strong>Jan 2023 – Jan 2024</strong></p>
+          <ul>
+            <li>Created 50+ reports and dashboards using SQL, Excel, and Power BI.</li>
+            <li>Analysed service operations data to identify recurring issues and performance bottlenecks.</li>
+            <li>Supported 20% reduction in system downtime through issue tracking and reporting.</li>
+            <li>Helped reduce recurring issues by 30% through root cause analysis and documentation.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <div class="grid-3">
+        <div class="card">
+          <h3>MSc Business Analytics</h3>
+          <p>University of Essex</p>
+          <p>Jan 2024 – 2025</p>
+        </div>
+        <div class="card">
+          <h3>MTech Data Science</h3>
+          <p>GITAM</p>
+          <p>Jul 2021 – Jun 2023</p>
+        </div>
+        <div class="card">
+          <h3>BTech Electrical & Electronics Engineering</h3>
+          <p>ANITS</p>
+          <p>Jul 2016 – Jun 2020</p>
+        </div>
+      </div>
+      <div class="note">
+        Add links here later: downloadable CV, LinkedIn profile, GitHub profile, and Power BI screenshots. Do not add confidential company data.
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>I am interested in Data Analyst, Reporting Analyst, BI Analyst, Operations Analyst, and MI Analyst opportunities where I can use SQL, Excel, Power BI, Python, and business analysis skills to support better decision-making.</p>
+      <div class="contact-box">
+        <span>Email: add your email</span>
+        <span>LinkedIn: add your LinkedIn URL</span>
+        <span>GitHub: add your GitHub URL</span>
+        <span>Location: United Kingdom</span>
+      </div>
+    </section>
+
+    <footer>
+      © 2026 Krishna Sai Naidu G · Data Analyst Portfolio
+    </footer>
+  </div>
+</body>
+</html>
