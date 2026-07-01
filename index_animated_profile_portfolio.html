@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Krishna Sai Naidu G | Data Analyst Portfolio</title>
+  <style>
+    :root {
+      --bg: #060914;
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --line: rgba(255,255,255,0.14);
+      --card: rgba(255,255,255,0.07);
+      --accent: #38bdf8;
+      --accent2: #a78bfa;
+      --accent3: #22c55e;
+      --warning: #fde68a;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.22), transparent 34%),
+        radial-gradient(circle at top right, rgba(167, 139, 250, 0.2), transparent 32%),
+        radial-gradient(circle at bottom, rgba(34, 197, 94, 0.1), transparent 32%),
+        #060914;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 44px 44px;
+      pointer-events: none;
+      opacity: .7;
+      mask-image: linear-gradient(to bottom, black, transparent 90%);
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 14px;
+      z-index: 40;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-top: 16px;
+      padding: 12px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(6, 9, 20, 0.78);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.28);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #020617;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+    }
+
+    nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: .92rem;
+      transition: .25s ease;
+    }
+
+    nav a:hover {
+      color: #fff;
+      background: rgba(255,255,255,.1);
+    }
+
+    .hero {
+      min-height: calc(100vh - 74px);
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: 30px;
+      padding: 70px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(255,255,255,.06);
+      margin-bottom: 18px;
+      animation: fadeUp .8s ease both;
+    }
+
+    .pulse {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent3);
+      animation: pulse 1.6s infinite;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.6rem, 6vw, 5.3rem);
+      line-height: .95;
+      letter-spacing: -0.07em;
+      animation: fadeUp .85s ease .08s both;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #fff, #bae6fd 35%, #c4b5fd 70%, #bbf7d0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .typing-line {
+      display: inline-block;
+      margin-top: 20px;
+      font-size: clamp(1.05rem, 2.1vw, 1.3rem);
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid var(--accent);
+      max-width: 0;
+      animation: typing 4.2s steps(48,end) .35s forwards, cursor .8s infinite;
+    }
+
+    .hero-sub {
+      max-width: 650px;
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: 1.02rem;
+      animation: fadeUp .9s ease .2s both;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+      animation: fadeUp .9s ease .32s both;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      font-weight: 800;
+      text-decoration: none;
+      transition: .25s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #020617;
+      border: 0;
+      box-shadow: 0 18px 32px rgba(56,189,248,.18);
+    }
+
+    .btn-secondary {
+      color: #fff;
+      background: rgba(255,255,255,.06);
+    }
+
+    .btn:hover { transform: translateY(-3px); }
+
+    .portrait-stage {
+      position: relative;
+      min-height: 560px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.12), rgba(255,255,255,.05)),
+        radial-gradient(circle at top, rgba(56,189,248,.18), transparent 45%);
+      backdrop-filter: blur(10px);
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,.34);
+      animation: fadeUp .9s ease .15s both;
+    }
+
+    .portrait-glow {
+      position: absolute;
+      inset: auto 50% 35px 50%;
+      transform: translateX(-50%);
+      width: 240px;
+      height: 40px;
+      background: radial-gradient(circle, rgba(56,189,248,.35), transparent 70%);
+      filter: blur(14px);
+      animation: glowPulse 4s ease-in-out infinite;
+    }
+
+    .portrait-ring {
+      position: absolute;
+      inset: 42px;
+      border: 1px dashed rgba(255,255,255,.18);
+      border-radius: 28px;
+      animation: slowSpin 18s linear infinite;
+    }
+
+    .portrait-card {
+      position: relative;
+      width: min(420px, 88%);
+      border-radius: 28px;
+      padding: 14px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.14);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 18px 40px rgba(0,0,0,.25);
+      animation: floatCard 5.5s ease-in-out infinite;
+    }
+
+    .portrait-card::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, rgba(56,189,248,.7), rgba(167,139,250,.65), rgba(34,197,94,.35));
+      z-index: -1;
+      filter: blur(10px);
+      opacity: .65;
+    }
+
+    .portrait-image-wrap {
+      position: relative;
+      border-radius: 22px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+    }
+
+    .portrait-image {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center top;
+      animation: zoomBreath 6s ease-in-out infinite;
+    }
+
+    .shine {
+      position: absolute;
+      top: -20%;
+      left: -40%;
+      width: 34%;
+      height: 140%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.24), transparent);
+      transform: rotate(15deg);
+      animation: shineMove 4.8s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      position: absolute;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.1);
+      backdrop-filter: blur(12px);
+      color: #fff;
+      font-size: .86rem;
+      font-weight: 800;
+      box-shadow: 0 12px 28px rgba(0,0,0,.24);
+    }
+
+    .badge1 { top: 40px; left: 24px; animation: bob 3.8s ease-in-out infinite; }
+    .badge2 { top: 110px; right: 24px; animation: bob 4.3s ease-in-out .4s infinite; }
+    .badge3 { bottom: 90px; left: 20px; animation: bob 4.0s ease-in-out .7s infinite; }
+
+    section {
+      scroll-margin-top: 96px;
+      padding: 44px 0;
+    }
+
+    .section-card {
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 34px;
+      background: rgba(255,255,255,.075);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 28px 70px rgba(0,0,0,.22);
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.045em;
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      color: #fff;
+      font-size: 1.22rem;
+    }
+
+    p { margin: 0 0 14px; color: var(--muted); }
+    strong { color: #fff; }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(255,255,255,.08);
+      padding: 20px;
+      transition: .25s ease;
+    }
+
+    .metric:hover {
+      transform: translateY(-5px);
+      background: rgba(255,255,255,.12);
+    }
+
+    .metric .number {
+      font-size: 2rem;
+      line-height: 1;
+      font-weight: 900;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .metric .label {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .box-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .info-box {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255,255,255,.075);
+      overflow: hidden;
+      transition: .25s ease;
+    }
+
+    .info-box:hover {
+      transform: translateY(-4px);
+      border-color: rgba(56,189,248,.42);
+    }
+
+    .info-box summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      font-weight: 900;
+      color: #fff;
+      font-size: 1.2rem;
+    }
+
+    .info-box summary::-webkit-details-marker { display: none; }
+
+    .summary-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(56,189,248,.22), rgba(167,139,250,.22));
+      color: #fff;
+      font-size: 1.25rem;
+    }
+
+    .chevron {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,.1);
+      transition: .25s ease;
+    }
+
+    details[open] .chevron {
+      transform: rotate(45deg);
+      background: rgba(56,189,248,.2);
+    }
+
+    .box-content {
+      padding: 0 24px 24px;
+      animation: openBox .28s ease both;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 16px;
+    }
+
+    .tag {
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(56,189,248,.25);
+      background: rgba(56,189,248,.12);
+      color: #bae6fd;
+      font-size: .82rem;
+      font-weight: 800;
+    }
+
+    .item-card {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px;
+      background: rgba(255,255,255,.06);
+      margin-bottom: 14px;
+    }
+
+    .item-card:last-child { margin-bottom: 0; }
+
+    ul {
+      margin: 10px 0 0;
+      padding-left: 22px;
+      color: var(--muted);
+    }
+
+    li { margin-bottom: 8px; }
+
+    .contact-card {
+      min-height: 74vh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+    }
+
+    .contact-inner {
+      width: min(820px, 100%);
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      padding: 48px 34px;
+      background:
+        radial-gradient(circle at top, rgba(56,189,248,.16), transparent 44%),
+        rgba(255,255,255,.08);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 30px 80px rgba(0,0,0,.25);
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .contact-links span {
+      color: var(--muted);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 10px 15px;
+      background: rgba(255,255,255,.08);
+    }
+
+    .note {
+      margin-top: 18px;
+      padding: 16px;
+      border: 1px solid rgba(250,204,21,.28);
+      border-radius: 18px;
+      color: var(--warning);
+      background: rgba(250,204,21,.08);
+      text-align: left;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 28px 0 42px;
+      font-size: .9rem;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes typing { from { max-width: 0; } to { max-width: 850px; } }
+    @keyframes cursor { 0%,100% { border-color: transparent; } 50% { border-color: var(--accent); } }
+    @keyframes floatCard { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+    @keyframes zoomBreath { 0%,100% { transform: scale(1); } 50% { transform: scale(1.03); } }
+    @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+    @keyframes glowPulse { 0%,100% { opacity: .6; } 50% { opacity: 1; } }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(34,197,94,.55); }
+      70% { box-shadow: 0 0 0 12px rgba(34,197,94,0); }
+      100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+    }
+    @keyframes shineMove {
+      0% { left: -45%; opacity: 0; }
+      18% { opacity: .75; }
+      45% { left: 120%; opacity: 0; }
+      100% { left: 120%; opacity: 0; }
+    }
+    @keyframes openBox {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slowSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 900px) {
+      nav { display: none; }
+      .hero, .about-grid, .box-grid { grid-template-columns: 1fr; }
+      .metric-grid { grid-template-columns: 1fr 1fr; }
+      .portrait-stage { min-height: 500px; }
+    }
+
+    @media (max-width: 560px) {
+      .container { width: min(100% - 22px, 1120px); }
+      .topbar { border-radius: 22px; }
+      .typing-line {
+        white-space: normal;
+        border-right: 0;
+        max-width: 100%;
+        animation: fadeUp .8s ease .2s both;
+      }
+      .section-card, .contact-inner { padding: 24px; }
+      .metric-grid { grid-template-columns: 1fr; }
+      .portrait-stage { min-height: 440px; }
+      .portrait-card { width: min(320px, 84%); }
+      .hero-badge { display: none; }
+      .info-box summary { padding: 20px; font-size: 1.05rem; }
+      .box-content { padding: 0 20px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="topbar">
+      <div class="logo">
+        <div class="logo-mark">K</div>
+        <span>Krishna Portfolio</span>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#portfolio-boxes">Sections</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main class="hero" id="home">
+      <div>
+        <div class="eyebrow"><span class="pulse"></span>Open to Data Analyst roles</div>
+        <h1><span class="gradient-text">Krishna Sai Naidu G</span></h1>
+        <div class="typing-line">Data Analyst · Reporting Analyst · BI Analyst · SQL · Power BI · Excel · Python</div>
+        <p class="hero-sub">
+          I analyse business and operational data, build dashboards, track KPIs, identify trends, and turn data into practical recommendations.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#portfolio-boxes">View Portfolio</a>
+          <a class="btn btn-secondary" href="#contact">Contact Me</a>
+        </div>
+      </div>
+
+      <div class="portrait-stage">
+        <div class="portrait-ring"></div>
+        <div class="hero-badge badge1">Professional Profile</div>
+        <div class="hero-badge badge2">Power BI · SQL</div>
+        <div class="hero-badge badge3">Open to Work</div>
+        <div class="portrait-card">
+          <div class="portrait-image-wrap">
+            <!-- Replace profile.png with your own animated portrait image file name if needed -->
+            <img src="profile.png" alt="Krishna professional portrait" class="portrait-image">
+            <div class="shine"></div>
+          </div>
+        </div>
+        <div class="portrait-glow"></div>
+      </div>
+    </main>
+
+    <section id="about">
+      <div class="section-card">
+        <div class="about-grid">
+          <div>
+            <h2>About Me</h2>
+            <p>
+              I am a Business Analytics graduate with hands-on experience across retail operations and service operations. My work has involved analysing SKU-level records, creating Excel and Power BI reports, validating data, tracking KPIs, investigating recurring issues, and communicating findings to support better business decisions.
+            </p>
+            <p>
+              My portfolio is focused on Data Analyst, Reporting Analyst, BI Analyst, Operations Analyst, and MI Analyst roles. The aim is simple: show that I can clean data, analyse performance, build useful dashboards, and explain what action the business should take.
+            </p>
+          </div>
+          <div class="metric-grid">
+            <div class="metric"><div class="number">2,000+</div><div class="label">SKU records analysed</div></div>
+            <div class="metric"><div class="number">15%</div><div class="label">Inventory accuracy improvement</div></div>
+            <div class="metric"><div class="number">50+</div><div class="label">Reports and dashboards</div></div>
+            <div class="metric"><div class="number">30%</div><div class="label">Recurring issue reduction</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio-boxes">
+      <div class="section-card">
+        <h2>Portfolio Sections</h2>
+        <p>Click each box to open the details.</p>
+
+        <div class="box-grid">
+          <details class="info-box" open>
+            <summary>
+              <span class="summary-left"><span class="icon">📊</span><span>Projects</span></span>
+              <span class="chevron">+</span>
+            </summary>
+            <div class="box-content">
+              <div class="item-card">
+                <h3>Retail Sales & Inventory Performance Dashboard</h3>
+                <div class="tag-row"><span class="tag">Power BI</span><span class="tag">Excel</span><span class="tag">SQL</span><span class="tag">Retail Analytics</span></div>
+                <p><strong>Business Problem:</strong> Retail teams need clear visibility of sales performance, stock movement, category trends, and reorder risks.</p>
+                <ul>
+                  <li>Cleaned product, sales, stock, and category data.</li>
+                  <li>Created KPIs for revenue, units sold, stock status, and reorder risk.</li>
+                  <li>Built dashboard views for executive summary, category performance, inventory movement, and recommendations.</li>
+                </ul>
+              </div>
+              <div class="item-card">
+                <h3>Service Operations & Incident Analysis</h3>
+                <div class="tag-row"><span class="tag">SQL</span><span class="tag">Power BI</span><span class="tag">Excel</span><span class="tag">Root Cause Analysis</span></div>
+                <p><strong>Business Problem:</strong> Service teams need to understand incident trends, repeated issues, downtime, and resolution performance.</p>
+                <ul>
+                  <li>Analysed issue categories, ticket volume, recurrence, and resolution time.</li>
+                  <li>Built SLA-style views and highlighted delayed resolution areas.</li>
+                  <li>Used root cause analysis to identify repeated operational problems.</li>
+                </ul>
+              </div>
+              <div class="item-card">
+                <h3>Employee Attrition Analysis</h3>
+                <div class="tag-row"><span class="tag">Python</span><span class="tag">Excel</span><span class="tag">Power BI</span><span class="tag">Predictive Analytics</span></div>
+                <p><strong>Business Problem:</strong> Organisations need to understand why employees leave and which factors increase attrition risk.</p>
+                <ul>
+                  <li>Explored attrition by department, salary band, tenure, overtime, and satisfaction level.</li>
+                  <li>Built visual summaries and a predictive model to classify attrition risk.</li>
+                  <li>Recommended targeted retention actions.</li>
+                </ul>
+              </div>
+              <div class="item-card">
+                <h3>Customer Sales & Revenue Analysis</h3>
+                <div class="tag-row"><span class="tag">Excel</span><span class="tag">SQL</span><span class="tag">Power BI</span><span class="tag">Revenue Analysis</span></div>
+                <p><strong>Business Problem:</strong> Businesses need to understand revenue trends, customer segments, product performance, and repeat sales.</p>
+                <ul>
+                  <li>Calculated monthly revenue, average order value, repeat purchase rate, and category performance.</li>
+                  <li>Segmented customers by purchase frequency and revenue contribution.</li>
+                  <li>Created pricing, promotion, and retention recommendations.</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <details class="info-box">
+            <summary>
+              <span class="summary-left"><span class="icon">💼</span><span>Experience</span></span>
+              <span class="chevron">+</span>
+            </summary>
+            <div class="box-content">
+              <div class="item-card">
+                <h3>VVIP Retail LTD</h3>
+                <p><strong>Trading Assistant / Business Analysis Support</strong></p>
+                <p>May 2024 – Present</p>
+                <ul>
+                  <li>Analysed 2,000+ SKU records across sales, category, and inventory data.</li>
+                  <li>Built Excel and Power BI reporting to track sales, revenue, stock movement, and category performance.</li>
+                  <li>Improved inventory accuracy by 15% through data checks and stock monitoring.</li>
+                  <li>Reduced reporting cycle time by 18% by improving report structure and recurring analysis.</li>
+                </ul>
+              </div>
+              <div class="item-card">
+                <h3>Digitral Pvt. Ltd.</h3>
+                <p><strong>Technical Support Engineer / Data Analytics Support</strong></p>
+                <p>Jan 2023 – Jan 2024</p>
+                <ul>
+                  <li>Created 50+ reports and dashboards using SQL, Excel, and Power BI.</li>
+                  <li>Analysed service operations data to identify recurring issues and performance bottlenecks.</li>
+                  <li>Supported 20% reduction in system downtime through issue tracking and reporting.</li>
+                  <li>Helped reduce recurring issues by 30% through root cause analysis and documentation.</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <details class="info-box">
+            <summary>
+              <span class="summary-left"><span class="icon">🧠</span><span>Skills</span></span>
+              <span class="chevron">+</span>
+            </summary>
+            <div class="box-content">
+              <div class="item-card">
+                <h3>Technical Skills</h3>
+                <div class="tag-row"><span class="tag">SQL</span><span class="tag">Power BI</span><span class="tag">Excel</span><span class="tag">Python</span><span class="tag">Jira</span></div>
+                <ul>
+                  <li>SQL querying, joins, filtering, grouping, and data extraction.</li>
+                  <li>Power BI dashboard development and KPI reporting.</li>
+                  <li>Advanced Excel reporting, pivot tables, lookups, Power Query, and data cleaning.</li>
+                  <li>Python for data analysis using pandas and basic modelling workflows.</li>
+                </ul>
+              </div>
+              <div class="item-card">
+                <h3>Analytical Skills</h3>
+                <ul>
+                  <li>Data cleaning and validation.</li>
+                  <li>Trend and variance analysis.</li>
+                  <li>KPI tracking and MI reporting.</li>
+                  <li>Root cause analysis.</li>
+                  <li>Data storytelling and stakeholder communication.</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <details class="info-box">
+            <summary>
+              <span class="summary-left"><span class="icon">🎓</span><span>Education</span></span>
+              <span class="chevron">+</span>
+            </summary>
+            <div class="box-content">
+              <div class="item-card">
+                <h3>MSc Business Analytics</h3>
+                <p><strong>University of Essex</strong></p>
+                <p>2024 – 2025</p>
+                <ul><li>Focused on business analytics, reporting, data analysis, and decision-making.</li><li>Completed predictive attrition modelling project.</li></ul>
+              </div>
+              <div class="item-card">
+                <h3>MTech Data Science</h3>
+                <p><strong>GITAM</strong></p>
+                <p>2021 – 2023</p>
+                <ul><li>Built data science and analytics foundations using Python, modelling, and machine learning concepts.</li><li>Completed CNN healthcare model project with 85% accuracy.</li></ul>
+              </div>
+              <div class="item-card">
+                <h3>BTech Electrical & Electronics Engineering</h3>
+                <p><strong>ANITS</strong></p>
+                <p>2016 – 2020</p>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <div class="note">
+          Important: upload your portrait image file into the same GitHub repository and name it <strong>profile.png</strong>. If you keep a different image name, update the line <strong>src="profile.png"</strong> in the code.
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-card">
+      <div class="contact-inner">
+        <h2>Contact</h2>
+        <p>I am open to Data Analyst, Reporting Analyst, BI Analyst, Operations Analyst, and MI Analyst roles where I can use SQL, Excel, Power BI, Python, and business analysis skills to support better decision-making.</p>
+        <div class="contact-links">
+          <span>Email: krishna.sai0819@gmail.com</span>
+          <span>LinkedIn: linkedin.com/in/krishna-sai-naidu-g-622500171</span>
+          <span>Phone: +44 07365524457</span>
+          <span>Location: United Kingdom</span>
+        </div>
+      </div>
+    </section>
+
+    <footer>© 2026 Krishna Sai Naidu G · Data Analyst Portfolio</footer>
+  </div>
+</body>
+</html>
